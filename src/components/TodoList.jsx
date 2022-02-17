@@ -18,7 +18,7 @@ class TodoList extends Component {
 			<Card>
 				{this.context.state.todos.map((el) => {
 					return (
-						<TodoItem key={el.id}>
+						<TodoItem complete={el.complete} key={el.id}>
 							<label>{el.text}</label>
 							<label>{el.date}</label>
 							<input

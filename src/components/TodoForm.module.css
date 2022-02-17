@@ -1,0 +1,20 @@
+.form {
+	width: 500px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 4fr 2fr 1fr;
+	margin-top: 60px;
+}
+.alert {
+	animation-name: in;
+	animation-duration: 1s;
+}
+
+@keyframes in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0, 9;
+	}
+}
