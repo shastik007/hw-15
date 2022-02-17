@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Card from './UI/Card'
 import Input from './UI/Input'
 import Button from './UI/Button'
 import TodoContext from '../store/TodoContext'
@@ -13,6 +12,8 @@ class TodoForm extends Component {
 		}
 	}
 
+	static contextType = TodoContext
+
 	onChangeTask(e) {
 		this.setState((prev) => ({ ...prev, text: e.target.value }))
 	}
@@ -22,9 +23,11 @@ class TodoForm extends Component {
 
 	onSubmit(e) {
 		e.preventDefault()
-		if (this.state.text.trim().length > 0) {
-			this.props.onAdd(this.state)
-		}
+		this.context.reducer('ADD', {
+			...this.state,
+			id: Math.random().toString(),
+			complete: false,
+		})
 	}
 
 	render() {

@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
 import './App.css'
 import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
+import { TodoContextProvider } from './store/TodoContext'
 
 class App extends Component {
-	constructor() {
-		super()
-		this.state = {
-			todos: [],
-		}
-	}
-
-	onAdd(obj) {
-		this.setState((prev) => ({ todos: [...prev.todos, obj] }))
-	}
-
 	render() {
-		console.log(this.state)
 		return (
 			<div className='App'>
-				<TodoForm onAdd={this.onAdd} />
+				<TodoContextProvider>
+					<TodoForm />
+					<TodoList/>
+				</TodoContextProvider>
 			</div>
 		)
 	}
